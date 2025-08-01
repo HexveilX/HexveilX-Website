@@ -94,10 +94,10 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
             variants={itemVariants}
             whileHover={{ 
                 scale: 1.1,
-                rotateY: 10,
-                z: 50
+                textShadow: "0 0 8px rgb(255, 255, 255)",
+                boxShadow: "0 0 20px #8b5cf6"
             }}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.9, rotate: -5 }}
         >
             <div className="bg-light p-8 rounded-2xl text-center hover:bg-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group glass-card border-neon hover-tilt">
                 <SkillIcon skill={skill} />
@@ -125,7 +125,7 @@ function SkillIcon({ skill }: { skill: Skill }) {
                     rotate: 360,
                     scale: 1.2
                 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.3 }}
             />
         );
     }
@@ -138,7 +138,7 @@ function SkillIcon({ skill }: { skill: Skill }) {
                 rotate: [0, -10, 10, 0],
                 textShadow: "0 0 20px currentColor"
             }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
         />
     );
 }
