@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import ContactForm from "../ContactForm";
 
 interface ContactInfo {
@@ -28,76 +29,151 @@ const contacts: ContactInfo[] = [
     }
 ];
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.2,
+            delayChildren: 0.3
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { y: 50, opacity: 0 },
+    show: { 
+        y: 0, 
+        opacity: 1,
+        transition: {
+            type: "spring",
+            stiffness: 100,
+            damping: 10
+        }
+    }
+};
+
 export default function ContactSection() {
     return (
-        <section id="contact" className="py-20 bg-dark animate-fade-in">
+        <motion.section 
+            id="contact" 
+            className="py-20 bg-dark"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={containerVariants}
+        >
             <div className="container mx-auto px-6 text-center">
                 <SectionTitle />
                 <SectionDescription />
                 <ContactContent />
             </div>
-        </section>
+        </motion.section>
     );
 }
 
 function SectionTitle() {
     return (
-        <h2 className="text-4xl md:text-5xl font-bold mb-16 gradient-text-accent animate-text-glow">
+        <motion.h2 
+            className="text-4xl md:text-5xl font-bold mb-16 gradient-text-accent animate-text-glow"
+            variants={itemVariants}
+        >
             Contact
-        </h2>
+        </motion.h2>
     );
 }
 
 function SectionDescription() {
     return (
-        <div className="max-w-6xl mx-auto">
-            <p className="text-xl text-gray-300 mb-12">
+        <motion.div 
+            className="max-w-6xl mx-auto"
+            variants={itemVariants}
+        >
+            <motion.p 
+                className="text-xl text-gray-300 mb-12"
+                whileHover={{ scale: 1.02 }}
+            >
                 Ready to collaborate on your next project? Let's build something amazing together!
-            </p>
-        </div>
+            </motion.p>
+        </motion.div>
     );
 }
 
 function ContactContent() {
     return (
-        <div className="max-w-6xl mx-auto">
+        <motion.div 
+            className="max-w-6xl mx-auto"
+            variants={containerVariants}
+        >
             <div className="flex flex-col md:flex-row gap-12 items-center justify-center md:items-center md:justify-center">
                 <ContactCards />
                 <ContactFormWrapper />
             </div>
-        </div>
+        </motion.div>
     );
 }
 
 function ContactCards() {
     return (
-        <div className="flex-shrink-0 w-full md:w-auto md:max-w-xs grid grid-cols-1 gap-8">
+        <motion.div 
+            className="flex-shrink-0 w-full md:w-auto md:max-w-xs grid grid-cols-1 gap-8"
+            variants={containerVariants}
+        >
             {contacts.map((contact, index) => (
                 <ContactCard key={index} contact={contact} />
             ))}
-        </div>
+        </motion.div>
     );
 }
 
 function ContactCard({ contact }: { contact: ContactInfo }) {
     return (
-        <a 
+        <motion.a 
             href={contact.link} 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="contact-card group bg-dark p-8 rounded-2xl hover:bg-primary/10 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-primary/25 active:scale-95"
+            className="contact-card group glass-card p-8 rounded-2xl hover:bg-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 border-neon"
+            variants={itemVariants}
+            whileHover={{ 
+                scale: 1.05,
+                rotateY: 5,
+                boxShadow: "0 20px 40px rgba(139, 92, 246, 0.3)"
+            }}
+            whileTap={{ scale: 0.95 }}
         >
-            <i className={`${contact.icon} text-5xl text-primary mb-4 group-hover:animate-bounce`}></i>
-            <h3 className="text-xl font-semibold mb-2">{contact.title}</h3>
-            <p className="text-gray-300">{contact.description}</p>
-        </a>
+            <motion.i 
+                className={`${contact.icon} text-5xl text-primary mb-4`}
+                whileHover={{ 
+                    scale: 1.2,
+                    rotate: 360,
+                    textShadow: "0 0 20px currentColor"
+                }}
+                transition={{ duration: 0.5 }}
+            />
+            <motion.h3 
+                className="text-xl font-semibold mb-2"
+                whileHover={{ scale: 1.05 }}
+            >
+                {contact.title}
+            </motion.h3>
+            <motion.p 
+                className="text-gray-300"
+                initial={{ opacity: 0.7 }}
+                whileHover={{ opacity: 1 }}
+            >
+                {contact.description}
+            </motion.p>
+        </motion.a>
     );
 }
 
 function ContactFormWrapper() {
     return (
-        <div className="flex-1 w-full max-w-2xl">
+        <motion.div 
+            className="flex-1 w-full max-w-2xl"
+            variants={itemVariants}
+        >
             <ContactForm />
-        </div>
+        </motion.div>
     );
 }

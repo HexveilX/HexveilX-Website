@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 interface Skill {
     icon?: string;
     name: string;
@@ -18,58 +20,125 @@ const skills: Skill[] = [
     }
 ];
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.3
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { y: 50, opacity: 0, scale: 0.8 },
+    show: { 
+        y: 0, 
+        opacity: 1, 
+        scale: 1,
+        transition: {
+            type: "spring",
+            stiffness: 100,
+            damping: 10
+        }
+    }
+};
+
 export default function SkillsSection() {
     return (
-        <section id="skills" className="py-20 bg-dark animate-fade-in">
+        <motion.section 
+            id="skills" 
+            className="py-20 bg-dark"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={containerVariants}
+        >
             <div className="container mx-auto px-6">
                 <SectionTitle />
                 <SkillsGrid />
             </div>
-        </section>
+        </motion.section>
     );
 }
 
 function SectionTitle() {
     return (
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text-primary animate-text-glow">
+        <motion.h2 
+            className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text-primary animate-text-glow"
+            variants={itemVariants}
+        >
             Skills & Technologies
-        </h2>
+        </motion.h2>
     );
 }
 
 function SkillsGrid() {
     return (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+        <motion.div 
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8"
+            variants={containerVariants}
+        >
             {skills.map((skill, index) => (
-                <SkillCard key={index} skill={skill} />
+                <SkillCard key={index} skill={skill} index={index} />
             ))}
-        </div>
+        </motion.div>
     );
 }
 
-function SkillCard({ skill }: { skill: Skill }) {
+function SkillCard({ skill, index }: { skill: Skill; index: number }) {
     return (
-        <div className="skill-card group">
-            <div className="bg-light p-8 rounded-2xl text-center hover:bg-primary/10 transition-all duration-300 transform hover:scale-110 hover:shadow-xl hover:shadow-primary/25 group animate-fade-in">
+        <motion.div 
+            className="skill-card group"
+            variants={itemVariants}
+            whileHover={{ 
+                scale: 1.1,
+                rotateY: 10,
+                z: 50
+            }}
+            whileTap={{ scale: 0.95 }}
+        >
+            <div className="bg-light p-8 rounded-2xl text-center hover:bg-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group glass-card border-neon hover-tilt">
                 <SkillIcon skill={skill} />
-                <h3 className="font-semibold">{skill.name}</h3>
+                <motion.h3 
+                    className="font-semibold"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                >
+                    {skill.name}
+                </motion.h3>
             </div>
-        </div>
+        </motion.div>
     );
 }
 
 function SkillIcon({ skill }: { skill: Skill }) {
     if (skill.img) {
         return (
-            <img 
+            <motion.img 
                 src={skill.img} 
                 alt={`${skill.name} Logo`} 
-                className="mx-auto mb-4 w-10 h-10 group-hover:animate-bounce" 
+                className="mx-auto mb-4 w-10 h-10" 
+                whileHover={{ 
+                    rotate: 360,
+                    scale: 1.2
+                }}
+                transition={{ duration: 0.5 }}
             />
         );
     }
 
     return (
-        <i className={`${skill.icon} text-[40px] ${skill.color} mb-4 group-hover:animate-bounce`}></i>
+        <motion.i 
+            className={`${skill.icon} text-[40px] ${skill.color} mb-4`}
+            whileHover={{ 
+                scale: 1.3,
+                rotate: [0, -10, 10, 0],
+                textShadow: "0 0 20px currentColor"
+            }}
+            transition={{ duration: 0.5 }}
+        />
     );
 }
