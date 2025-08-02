@@ -75,7 +75,7 @@ export default function ContactSection() {
 function SectionTitle() {
     return (
         <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-16 gradient-text-accent animate-text-glow"
+            className="text-4xl md:text-5xl font-bold mb-16 gradient-text-accent"
             variants={itemVariants}
         >
             Contact
@@ -89,12 +89,9 @@ function SectionDescription() {
             className="max-w-6xl mx-auto"
             variants={itemVariants}
         >
-            <motion.p 
-                className="text-xl text-gray-300 mb-12"
-                whileHover={{ scale: 1.02 }}
-            >
+            <p className="text-xl text-gray-300 mb-12">
                 Ready to collaborate on your next project? Let's build something amazing together!
-            </motion.p>
+            </p>
         </motion.div>
     );
 }
@@ -128,42 +125,22 @@ function ContactCards() {
 
 function ContactCard({ contact }: { contact: ContactInfo }) {
     return (
-        <motion.a 
+        <a 
             href={contact.link} 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="contact-card group glass-card p-8 rounded-2xl hover:bg-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 border-neon"
-            variants={itemVariants}
-            whileHover={{ 
-                scale: 1.05,
-                rotateY: 5,
-                boxShadow: "0 20px 40px rgba(139, 92, 246, 0.3)"
-            }}
-            whileTap={{ scale: 0.95 }}
+            className="contact-card bg-light p-8 rounded-2xl hover:bg-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25"
         >
-            <motion.i 
+            <i 
                 className={`${contact.icon} text-5xl text-primary mb-4`}
-                whileHover={{ 
-                    scale: 1.2,
-                    rotate: 360,
-                    textShadow: "0 0 20px currentColor"
-                }}
-                transition={{ duration: 0.5 }}
             />
-            <motion.h3 
-                className="text-xl font-semibold mb-2"
-                whileHover={{ scale: 1.05 }}
-            >
+            <h3 className="text-xl font-semibold mb-2">
                 {contact.title}
-            </motion.h3>
-            <motion.p 
-                className="text-gray-300"
-                initial={{ opacity: 0.7 }}
-                whileHover={{ opacity: 1 }}
-            >
+            </h3>
+            <p className="text-gray-300">
                 {contact.description}
-            </motion.p>
-        </motion.a>
+            </p>
+        </a>
     );
 }
 

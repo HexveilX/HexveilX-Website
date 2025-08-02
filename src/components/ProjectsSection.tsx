@@ -73,7 +73,7 @@ export default function ProjectsSection() {
 function SectionTitle() {
     return (
         <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text-secondary animate-text-glow"
+            className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text-secondary"
             variants={itemVariants}
         >
             My Projects
@@ -97,16 +97,10 @@ function ProjectsGrid() {
 function ProjectCard({ project }: { project: Project }) {
     return (
         <motion.div
-            className="project-card glass-card rounded-3xl overflow-hidden shadow-glow-lg hover:shadow-glow-xl transition-all duration-300 border border-primary/10 backdrop-blur-md flex flex-col group"
+            className="project-card bg-light rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col"
             style={{ minHeight: 370 }}
             variants={itemVariants}
-            whileHover={{ 
-                y: -10,
-                rotateX: 5,
-                rotateY: 5,
-                scale: 1.02
-            }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={{ y: -5, scale: 1.02 }}
         >
             <ProjectHeader project={project} />
             <ProjectContent project={project} />
@@ -116,48 +110,25 @@ function ProjectCard({ project }: { project: Project }) {
 
 function ProjectHeader({ project }: { project: Project }) {
     return (
-        <motion.div 
-            className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden animate-gradient-shift`}
-            whileHover={{ scale: 1.05 }}
-        >
-            <div className="absolute inset-0 bg-black/10"></div>
-            <motion.i 
-                className={`${project.icon} text-6xl text-white drop-shadow-lg relative z-10`}
-                whileHover={{ 
-                    scale: 1.2,
-                    rotate: 360,
-                    textShadow: "0 0 30px rgba(255,255,255,0.8)"
-                }}
-                transition={{ duration: 0.6 }}
+        <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center`}>
+            <i 
+                className={`${project.icon} text-6xl text-white drop-shadow-lg`}
             />
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
-        </motion.div>
+        </div>
     );
 }
 
 function ProjectContent({ project }: { project: Project }) {
     return (
         <div className="p-8 flex-1 flex flex-col justify-between">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-            >
-                <motion.h3 
-                    className="text-2xl font-bold mb-2 gradient-text-primary text-shadow"
-                    whileHover={{ scale: 1.05 }}
-                >
+            <div>
+                <h3 className="text-2xl font-bold mb-2 gradient-text-primary">
                     {project.title}
-                </motion.h3>
-                <motion.p 
-                    className="text-gray-500 mb-6 text-base leading-relaxed"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.4 }}
-                >
+                </h3>
+                <p className="text-gray-500 mb-6 text-base leading-relaxed">
                     {project.description}
-                </motion.p>
-            </motion.div>
+                </p>
+            </div>
             <ProjectLinks project={project} />
         </div>
     );
@@ -165,42 +136,31 @@ function ProjectContent({ project }: { project: Project }) {
 
 function ProjectLinks({ project }: { project: Project }) {
     return (
-        <motion.div 
-            className="flex gap-3 mt-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-        >
-            <motion.a
+        <div className="flex gap-3 mt-auto">
+            <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-4 py-2 rounded-full transition-all duration-200 font-semibold
                     bg-transparent text-primary border border-primary/40
-                    hover:bg-primary hover:text-white
-                    active:scale-98 focus-ring"
-                whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(139, 92, 246, 0.4)" }}
-                whileTap={{ scale: 0.95 }}
+                    hover:bg-primary hover:text-white"
             >
                 <i className="fab fa-github mr-2"></i>
                 GitHub
-            </motion.a>
+            </a>
             {project.demo && (
-                <motion.a
+                <a
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-4 py-2 rounded-full transition-all duration-200 font-semibold
                         bg-transparent text-accent border border-accent/40
-                        hover:bg-accent hover:text-white
-                        active:scale-98 focus-ring"
-                    whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(6, 182, 212, 0.4)" }}
-                    whileTap={{ scale: 0.95 }}
+                        hover:bg-accent hover:text-white"
                 >
                     <i className="fas fa-external-link-alt mr-2"></i>
                     Live Demo
-                </motion.a>
+                </a>
             )}
-        </motion.div>
+        </div>
     );
 }

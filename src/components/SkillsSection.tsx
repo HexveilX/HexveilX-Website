@@ -66,7 +66,7 @@ export default function SkillsSection() {
 function SectionTitle() {
     return (
         <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text-primary animate-text-glow"
+            className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text-primary"
             variants={itemVariants}
         >
             Skills & Technologies
@@ -92,23 +92,13 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
         <motion.div 
             className="skill-card group"
             variants={itemVariants}
-            whileHover={{ 
-                scale: 1.1,
-                textShadow: "0 0 8px rgb(255, 255, 255)",
-                boxShadow: "0 0 20px #8b5cf6"
-            }}
-            whileTap={{ scale: 0.9, rotate: -5 }}
+            whileHover={{ scale: 1.05 }}
         >
-            <div className="bg-light p-8 rounded-2xl text-center hover:bg-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group glass-card border-neon hover-tilt">
+            <div className="bg-light p-8 rounded-2xl text-center hover:bg-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25">
                 <SkillIcon skill={skill} />
-                <motion.h3 
-                    className="font-semibold"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                >
+                <h3 className="font-semibold">
                     {skill.name}
-                </motion.h3>
+                </h3>
             </div>
         </motion.div>
     );
@@ -117,28 +107,17 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
 function SkillIcon({ skill }: { skill: Skill }) {
     if (skill.img) {
         return (
-            <motion.img 
+            <img 
                 src={skill.img} 
                 alt={`${skill.name} Logo`} 
                 className="mx-auto mb-4 w-10 h-10" 
-                whileHover={{ 
-                    rotate: 360,
-                    scale: 1.2
-                }}
-                transition={{ duration: 0.3 }}
             />
         );
     }
 
     return (
-        <motion.i 
+        <i 
             className={`${skill.icon} text-[40px] ${skill.color} mb-4`}
-            whileHover={{ 
-                scale: 1.3,
-                rotate: [0, -10, 10, 0],
-                textShadow: "0 0 20px currentColor"
-            }}
-            transition={{ duration: 0.3 }}
         />
     );
 }

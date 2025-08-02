@@ -33,52 +33,12 @@ export default function ParticleBackground() {
     return (
         <div className="fixed inset-0 pointer-events-none z-0">
             {particles.map((particle, index) => (
-                <motion.div 
+                <div 
                     key={index} 
-                    className={particle.className} 
+                    className={`${particle.className} animate-float`} 
                     style={particle.style}
-                    animate={{
-                        y: [0, -20, 0],
-                        x: [0, 10, -10, 0],
-                        scale: [1, 1.2, 1],
-                        opacity: [0.3, 0.8, 0.3]
-                    }}
-                    transition={{
-                        duration: 6 + index,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: index * 0.5
-                    }}
                 />
             ))}
-            
-            {/* Additional floating elements */}
-            <motion.div
-                className="absolute top-1/5 left-1/5 w-3 h-3 bg-gradient-to-r from-primary to-secondary rounded-full opacity-20"
-                animate={{
-                    rotate: 360,
-                    scale: [1, 1.5, 1],
-                }}
-                transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "linear"
-                }}
-            />
-            
-            <motion.div
-                className="absolute bottom-1/4 right-1/5 w-4 h-4 bg-gradient-to-r from-accent to-secondary rounded-full opacity-15"
-                animate={{
-                    rotate: -360,
-                    y: [0, -30, 0],
-                    x: [0, 20, 0]
-                }}
-                transition={{
-                    duration: 10,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }}
-            />
         </div>
     );
 }
