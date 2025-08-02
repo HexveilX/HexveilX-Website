@@ -211,6 +211,50 @@ body {
   animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Subtle aesthetic enhancements */
+.animate-gentle-pulse {
+  animation: gentlePulse 4s ease-in-out infinite;
+}
+
+.animate-soft-glow {
+  animation: softGlow 3s ease-in-out infinite alternate;
+}
+
+.animate-subtle-float {
+  animation: subtleFloat 8s ease-in-out infinite;
+}
+
+.animate-smooth-scale {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes softGlow {
+  0% {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
+  }
+}
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
 /* New beautiful classes */
 .animate-shimmer {
   background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
@@ -241,8 +285,8 @@ body {
 }
 
 .hover-lift:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(139, 92, 246, 0.2);
 }
 
 .hover-glow {
@@ -250,15 +294,16 @@ body {
 }
 
 .hover-glow:hover {
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
 }
 
 .hover-scale {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .hover-scale:hover {
   transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 /* Glass morphism effect */

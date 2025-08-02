@@ -52,14 +52,15 @@ function ProfileImage() {
         <motion.div
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
-            className="relative mb-6"
+            className="relative mb-6 animate-subtle-float"
         >
             <img
                 src={logo}
                 alt="HexveilX Profile"
                 loading="lazy"
-                className="w-32 h-32 rounded-full shadow-glow-lg border-4 border-primary bg-white object-cover transition-all duration-300"
+                className="w-32 h-32 rounded-full shadow-glow-lg border-4 border-primary bg-white object-cover transition-all duration-300 animate-soft-glow"
             />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 animate-gentle-pulse -z-10"></div>
         </motion.div>
     );
 }

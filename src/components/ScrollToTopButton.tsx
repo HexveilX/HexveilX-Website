@@ -30,12 +30,13 @@ export default function ScrollToTopButton() {
     return (
         <button
             onClick={scrollToTop}
-            className={`fixed bottom-8 right-8 z-50 p-4 rounded-full bg-gradient-to-br from-primary to-accent text-white shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 ${
+            className={`fixed bottom-8 right-8 z-50 p-4 rounded-full bg-gradient-to-br from-primary to-accent text-white shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 animate-gentle-pulse relative overflow-hidden ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
             }`}
             aria-label="Scroll to top"
             title="Back to top"
         >
+            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-full animate-subtle-float"></div>
             <i className="fas fa-arrow-up text-2xl" />
         </button>
     );

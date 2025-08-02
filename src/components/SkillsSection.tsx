@@ -90,15 +90,18 @@ function SkillsGrid() {
 function SkillCard({ skill, index }: { skill: Skill; index: number }) {
     return (
         <motion.div 
-            className="skill-card group"
+            className="skill-card group animate-smooth-scale"
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
         >
-            <div className="bg-light p-8 rounded-2xl text-center hover:bg-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25">
+            <div className="bg-light p-8 rounded-2xl text-center hover:bg-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10">
                 <SkillIcon skill={skill} />
                 <h3 className="font-semibold">
                     {skill.name}
                 </h3>
+                </div>
             </div>
         </motion.div>
     );

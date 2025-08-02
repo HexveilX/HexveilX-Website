@@ -125,14 +125,17 @@ function ContactCards() {
 
 function ContactCard({ contact }: { contact: ContactInfo }) {
     return (
+        <motion.div variants={itemVariants}>
         <a 
             href={contact.link} 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="contact-card bg-light p-8 rounded-2xl hover:bg-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25"
+            className="contact-card bg-light p-8 rounded-2xl hover:bg-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group block animate-smooth-scale relative overflow-hidden"
         >
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+            <div className="relative z-10">
             <i 
-                className={`${contact.icon} text-5xl text-primary mb-4`}
+                className={`${contact.icon} text-5xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110`}
             />
             <h3 className="text-xl font-semibold mb-2">
                 {contact.title}
@@ -140,7 +143,9 @@ function ContactCard({ contact }: { contact: ContactInfo }) {
             <p className="text-gray-300">
                 {contact.description}
             </p>
+            </div>
         </a>
+        </motion.div>
     );
 }
 
