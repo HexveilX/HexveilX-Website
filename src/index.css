@@ -183,10 +183,6 @@ body {
 }
 
 /* Enhanced versions of original animations */
-.animate-gentle-glow {
-  animation: gentle-glow 3s ease-in-out infinite;
-}
-
 .animate-soft-pulse {
   animation: soft-pulse 4s ease-in-out infinite;
 }
@@ -353,18 +349,6 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 /* Beautiful shadows */
-.shadow-glow {
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-}
-
-.shadow-glow-lg {
-  box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
-}
-
-.shadow-glow-xl {
-  box-shadow: 0 0 60px rgba(139, 92, 246, 0.5);
-}
-
 .shadow-deep {
   box-shadow: 
     0 10px 25px rgba(0, 0, 0, 0.2),

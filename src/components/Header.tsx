@@ -93,12 +93,12 @@ function MobileMenuButton({ onClick }: { onClick: () => void }) {
     return (
         <div className="md:hidden">
             <button 
-                className="relative w-12 h-12 rounded-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 hover:scale-105 transition-all duration-300 group shadow-glow" 
+                className="relative w-12 h-12 rounded-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 hover:scale-105 transition-all duration-300 group" 
                 onClick={onClick} 
                 aria-label="Open menu"
             >
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <i className="fas fa-bars text-xl relative z-10 group-hover:animate-bounce-gentle"></i>
+                <i className="fas fa-bars text-xl relative z-10"></i>
             </button>
         </div>
     );
@@ -128,7 +128,7 @@ function DrawerHeader({ onClose }: { onClose: () => void }) {
     return (
         <div className="flex items-center justify-between mb-8 pb-6 border-b border-primary/20">
             <div className="flex items-center gap-3">
-                <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-primary to-secondary shadow-glow">
+                <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-primary to-secondary">
                     <img 
                         src={logo} 
                         alt="Logo" 
@@ -138,7 +138,7 @@ function DrawerHeader({ onClose }: { onClose: () => void }) {
                 <span className="text-xl font-bold gradient-text-primary">HexveilX</span>
             </div>
             <button 
-                className="w-10 h-10 rounded-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 hover:scale-110 transition-all duration-300 flex items-center justify-center shadow-glow" 
+                className="w-10 h-10 rounded-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 hover:scale-110 transition-all duration-300 flex items-center justify-center" 
                 onClick={onClose} 
                 aria-label="Close menu"
             >
@@ -157,7 +157,7 @@ function DrawerNavigation({ activeLink, onClose }: { activeLink: string; onClose
                     href={link.href}
                     className={`group flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 ${
                         activeLink === link.href.substring(1) 
-                            ? 'bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 text-primary shadow-glow' 
+                            ? 'bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 text-primary' 
                             : 'bg-slate-700/50 border border-slate-600 text-gray-300 hover:bg-slate-700 hover:border-primary/30 hover:text-primary'
                     }`}
                     onClick={onClose}
@@ -165,14 +165,14 @@ function DrawerNavigation({ activeLink, onClose }: { activeLink: string; onClose
                 >
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                         activeLink === link.href.substring(1) 
-                            ? 'bg-primary text-white shadow-glow' 
+                            ? 'bg-primary text-white' 
                             : 'bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white'
                     }`}>
                         <i className={`${link.icon} text-lg`}></i>
                     </div>
                     <span className="text-lg font-semibold">{link.label}</span>
                     {activeLink === link.href.substring(1) && (
-                        <div className="ml-auto w-2 h-2 rounded-full bg-primary animate-pulse-glow"></div>
+                        <div className="ml-auto w-2 h-2 rounded-full bg-primary animate-soft-pulse"></div>
                     )}
                 </a>
             ))}
