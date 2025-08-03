@@ -92,12 +92,14 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
         <motion.div 
             className="skill-card group animate-smooth-scale"
             variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, y: -5 }}
         >
-            <div className="bg-light p-8 rounded-2xl text-center hover:bg-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="bg-light p-8 rounded-2xl text-center hover:bg-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 relative overflow-hidden group-hover:animate-gentle-glow">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
                 <div className="relative z-10">
-                <SkillIcon skill={skill} />
+                <div className="transition-transform duration-300 group-hover:scale-110">
+                    <SkillIcon skill={skill} />
+                </div>
                 <h3 className="font-semibold">
                     {skill.name}
                 </h3>

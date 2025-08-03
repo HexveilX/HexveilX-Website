@@ -130,13 +130,15 @@ function ContactCard({ contact }: { contact: ContactInfo }) {
             href={contact.link} 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="contact-card bg-light p-8 rounded-2xl hover:bg-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group block animate-smooth-scale relative overflow-hidden"
+            className="contact-card bg-light p-8 rounded-2xl hover:bg-primary/10 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 group block animate-smooth-scale relative overflow-hidden hover:animate-gentle-glow"
         >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-secondary/5 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-2xl group-hover:animate-soft-pulse"></div>
             <div className="relative z-10">
-            <i 
-                className={`${contact.icon} text-5xl text-primary mb-4 transition-transform duration-300 group-hover:scale-110`}
-            />
+            <div className="transition-transform duration-300 group-hover:scale-110 group-hover:animate-subtle-bounce">
+                <i 
+                    className={`${contact.icon} text-5xl text-primary mb-4`}
+                />
+            </div>
             <h3 className="text-xl font-semibold mb-2">
                 {contact.title}
             </h3>

@@ -100,9 +100,9 @@ function ProjectCard({ project }: { project: Project }) {
             className="project-card bg-light rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col group animate-smooth-scale"
             style={{ minHeight: 370 }}
             variants={itemVariants}
-            whileHover={{ y: -5, scale: 1.02 }}
+            whileHover={{ y: -8, scale: 1.02 }}
         >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-transparent to-secondary/8 opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-3xl group-hover:animate-soft-pulse"></div>
             <div className="relative z-10">
             <ProjectHeader project={project} />
             <ProjectContent project={project} />
@@ -114,9 +114,9 @@ function ProjectCard({ project }: { project: Project }) {
 function ProjectHeader({ project }: { project: Project }) {
     return (
         <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
-            <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent animate-gentle-pulse"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent animate-gentle-pulse group-hover:animate-soft-pulse"></div>
             <i 
-                className={`${project.icon} text-6xl text-white drop-shadow-lg relative z-10 transition-transform duration-300 group-hover:scale-110`}
+                className={`${project.icon} text-6xl text-white drop-shadow-lg relative z-10 transition-transform duration-300 group-hover:scale-110 group-hover:animate-subtle-bounce`}
             />
         </div>
     );

@@ -125,60 +125,31 @@ body {
 }
 
 /* New beautiful animations */
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-@keyframes pulse-glow {
+/* Subtle enhancement animations */
+@keyframes gentle-glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
   }
   50% {
-    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
   }
 }
 
-@keyframes rotate-slow {
-  from {
-    transform: rotate(0deg);
+@keyframes soft-pulse {
+  0%, 100% {
+    opacity: 0.8;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    opacity: 1;
   }
 }
 
-@keyframes bounce-gentle {
+@keyframes subtle-bounce {
   0%, 100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes text-glow {
-  0%, 100% {
-    text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
-  }
-  50% {
-    text-shadow: 0 0 20px rgba(139, 92, 246, 0.8), 0 0 30px rgba(139, 92, 246, 0.6);
+    transform: translateY(-5px);
   }
 }
 
@@ -209,6 +180,15 @@ body {
 
 .animate-slide-in-right {
   animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced versions of original animations */
+.animate-gentle-glow {
+  animation: gentle-glow 3s ease-in-out infinite;
+}
+
+.animate-soft-pulse {
+  animation: soft-pulse 4s ease-in-out infinite;
 }
 
 /* Subtle aesthetic enhancements */
@@ -253,57 +233,6 @@ body {
   50% {
     transform: translateY(-8px);
   }
-}
-
-/* New beautiful classes */
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
-}
-
-.animate-rotate-slow {
-  animation: rotate-slow 20s linear infinite;
-}
-
-.animate-bounce-gentle {
-  animation: bounce-gentle 2s ease-in-out infinite;
-}
-
-.animate-gradient-shift {
-  background-size: 200% 200%;
-  animation: gradient-shift 4s ease infinite;
-}
-
-/* Beautiful hover effects */
-.hover-lift {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 35px rgba(139, 92, 246, 0.2);
-}
-
-.hover-glow {
-  transition: all 0.3s ease;
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-}
-
-.hover-scale {
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.hover-scale:hover {
-  transform: scale(1.05);
-  filter: brightness(1.1);
 }
 
 /* Glass morphism effect */
